@@ -47,10 +47,16 @@ for _ in range(3):
 The trick here is that unpadded RSA is a homomorphic encryption, which means that we can do operations on the encrypted data. So we have the following:
 
 ```
-c1 * c2 = encrypt(m1 * m2)
+c1 * c2 = m1^e1 mod n1 * m2^e2 mod n2
 ```
 
-But what if c1 and c2 are the same? Then $c^2 = $ encrypt $(m^2)$ where $c$ is the given ciphertext from the program and $m$ is the flag. So all we have to do is to square the ciphertext and send that as the input. Then we square root the output.
+But what if c1 and c2 are the same? Then 
+
+```
+c * c = m^e mod n * m^e mod n = (m*m)^e mod n = encrypt(m * m) 
+```
+
+where ```c``` is the given ciphertext from the program and ```m``` is the flag. So all we have to do is to square the ciphertext and send that as the input. Then we square root the output.
 
 ``` python
 from Crypto.Util.number import long_to_bytes

@@ -14,7 +14,7 @@ Looks like the oracle took a nice long holiday and her apprentice had to cover f
 
 ## Solution
 
-The trick here is that unpadded RSA encryptions are homeomorphic, which means that we can do operations on the encrypted data. So we have the following:
+The trick here is that unpadded RSA is a homomorphic encryption, which means that we can do operations on the encrypted data. So we have the following:
 
 ```
 c1 * c2 = encrypt(m1 * m2)
